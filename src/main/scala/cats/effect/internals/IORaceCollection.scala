@@ -69,7 +69,7 @@ object Program {
 		val ioB = timer.sleep(9.second) *> io(1)
 		val ioC = timer.sleep(1.second) *> io(2, Some(new NullPointerException()))
 		val ioD = timer.sleep(3.second) *> io(3)
-		val ioE = timer.sleep(1.second) *> io(4)
+		val ioE = timer.sleep(2.second) *> io(4)
 
 		IORaceCollection.raceMany(List(ioA, ioB, ioC, ioD, ioE)).handleError(t ⇒ Left[Throwable, Int](t)).unsafeRunSync().fold(
 			println,
